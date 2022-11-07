@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
         <nav className='flex items-inline items-center justify-between bg-teal-800 p-3'>
             <div className='flex items-center flex-shrink-0 text-white'>
-                <div className='flex items-center h-20 w-full'>
+                <div className='flex items-center h-12 w-full'>
                     CITY TRAVELER
                 </div>
             </div>
@@ -16,7 +16,6 @@ const Navbar = () => {
                     <Link href="/citiesPlanning" className='lg:inline-block text-teal-200 hover:text-white'>Planning</Link>
                 </div>
             </div>
-                
         </nav>
     )
 }

@@ -36,7 +36,7 @@ const NewCity = () => {
         }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         let errs = validate();
         setErrors(errs);
@@ -59,31 +59,28 @@ const NewCity = () => {
 
     return (
         <div>
-                {/* {
-                    isSubmitting ? <Loader active inline='centered' /> */}
-                    <Form className='bg-white shadow-md rounded px-8 pt-3 pb-4 mb-3'
-                        onSubmit={handleSubmit}>
-                        <div className='flex items-center py-2'>
-                            <input
-                            className='appearance-none bg-transparent border-b border-teal-500 leading-tight 
-                            w-full text-gray-700 p-2 mb-2 focus:outline-none text-lg'
-                            fluid="true"
-                            // error={errors.title ? { content: 'Please enter a city name' } : null}
-                            placeholder='City'
-                            type='text'
-                            name='title'
-                            onChange={handleChange}
-                        />
-                        </div>
+            <Form className='bg-white shadow-md rounded px-8 pt-3 pb-4 mb-3 mx-5'
+                onSubmit={handleSubmit}>
+                <div className='flex items-center py-2'>
+                    <input
+                    className='appearance-none bg-transparent border-b border-teal-500 leading-tight 
+                    w-full text-gray-700 p-2 mb-2 focus:outline-none text-lg'
+                    fluid="true"
+                    // error={errors.title ? { content: 'Please enter a city name' } : null}
+                    placeholder='City'
+                    type='text'
+                    name='title'
+                    onChange={handleChange}
+                />
+                </div>
                         
-                        <Button
-                            className='flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 
-                            hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded'
-                            type='submit'
-                            >Add to plan
-                        </Button>
-                    </Form>
-                {/* } */}
+                <Button
+                    className='flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 
+                     hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded'
+                    type='submit'
+                    >Add to plan
+                </Button>
+            </Form>  
         </div>
     )
 }

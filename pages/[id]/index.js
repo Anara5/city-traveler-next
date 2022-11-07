@@ -1,51 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import fetch from 'isomorphic-unfetch';
-import { Button, Card, Loader } from 'semantic-ui-react';
+import { Loader, Confirm } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
 
-
 const City = ({ city }) => {
+    const [confirm, setConfirm] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
     const router = useRouter();
 
+    const open = () => setConfirm(true);
+    const close = () => setConfirm(false);
+    
     useEffect(() => {
         if (isDeleting) {
             deleteCity();
         }
     }, [isDeleting]);
 
-    const handleDelete = async () => {
-        setIsDeleting(true);
-    }
-
     const deleteCity = async () => {
         const cityId = router.query.id;
         try {
-            const deleted = await fetch(`http://localhost/api/cities/${cityId}`, {
-                method: 'DELETE'
-            })
-            return deleted.json();
+            const deleted = await fetch(`http://localhost:3000/api/cities/${cityId}`, {
+                method: 'DELETE',
+            });
+            router.push('/citiesPlanning')
         } catch (error) {
             console.log(error)
         }
     }
+    
+    const handleDelete = async () => {
+        setIsDeleting(true);
+        close();
+    }
 
     return (
         <div className='flex-2'>
-            {isDeleting 
-            ? <Loader active />
-            : <Card>
-                <Card.Content className='flex flex-row items-center mb-2'>
-                    <Card.Header>
-                        <h5>{city.title}</h5>
-                    </Card.Header>
-                    <Button className='object-right bg-slate-400 hover:bg-slate-300 text-sm ml-2 py-1 px-2 rounded'
-                    onClick={handleDelete}>
+            <Confirm
+                className='text-center'
+                open={confirm}
+                onCancel={close}
+                onConfirm={handleDelete}
+            />
+
+            {
+                isDeleting ? <Loader active /> : 
+                <div className='flex text-center'>
+                    {city.title}
+                    
+                    <button onClick={open}>
                         Delete
-                    </Button>
-                </Card.Content>
-            </Card>
-            }   
+                    </button>
+                </div>
+            }
         </div>
     )
 }

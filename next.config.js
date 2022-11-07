@@ -7,6 +7,6 @@ const nextConfig = {
 module.exports = {
   nextConfig,
   env: {
-    MONGO_URI: process.env.DATABASE_URL
+    MONGO_URI: process.env.DATABASE_URI
   }
 }
