@@ -11,7 +11,6 @@ const NewCity = () => {
 
     useEffect(() => {
         if (isSubmitting) {
-            
             if (Object.keys(errors ?? {}).length === 0) {
                 addCity();
             } else {
@@ -41,6 +40,7 @@ const NewCity = () => {
         let errs = validate();
         setErrors(errs);
         setIsSubmitting(true);
+        e.target.reset();
     }
 
     const validate = () => {
@@ -58,7 +58,7 @@ const NewCity = () => {
     }
 
     return (
-        <div>
+        <div className=''>
             <Form className='bg-white shadow-md rounded px-8 pt-3 pb-4 mb-3 mx-5'
                 onSubmit={handleSubmit}>
                 <div className='flex items-center py-2'>

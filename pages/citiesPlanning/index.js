@@ -8,18 +8,18 @@ import { useRouter } from 'next/router';
 const CitiesList = ({ cities }) => {
 
     return (
-        <div className='min-h-screen p-5'>
+        <div id="head" className='p-8 bg-[#DCDCDC]'>
             <NewCity />
 
-            <h1 className='p-3 text-2xl text-center'>Cities List that is planned:</h1>
+            <h1 className='p-3 text-2xl text-center'>Planned Cities List:</h1>
             
-            <div className='flex-2'>
+            <div className=''>
 
                 {
                     cities?.map(city => {
                         return (
                             <div key={city._id}>
-                                <Card className='flex flex-row justify-center items-baseline mb-2 '>
+                                <Card className='flex flex-row justify-left text-xl items-baseline mb-2'>
                                     <p>{city.title}</p>
                                     
                                     <Link href={`/${city._id}`}>                                    
