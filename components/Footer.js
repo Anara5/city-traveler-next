@@ -15,7 +15,7 @@ const Footer = () => {
                 <Link href="https://github.com/Anara5" className='hover:underline'>Github</Link>
             </li>
         </ul>
-            <Link className='fixed bottom-2 mr-[45%] w-10 right-8 cursor-pointer'
+            <Link className='fixed bottom-2 mr-[40%] w-10 right-8 cursor-pointer'
                 href="#head">
                 <Image className="filter grayscale hover:grayscale-0
                 cursor-pointer" src={top} alt="home" />

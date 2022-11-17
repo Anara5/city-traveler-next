@@ -10,3 +10,9 @@ body {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .button {
+    @apply object-right bg-slate-400 hover:bg-slate-300 text-sm ml-2 py-1 px-2 rounded;
+  }
+}
